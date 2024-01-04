@@ -124,7 +124,7 @@ export default {
     async ipAddress() {
       await fetch('https://api.ipify.org?format=text')
         .then(function (response) {
-          console.log('response data -->', response)
+          console.log('response IP data -->', response)
           return response.text()
         })
         .then(function (ip) {
