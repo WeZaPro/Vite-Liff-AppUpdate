@@ -122,16 +122,15 @@ export default {
   },
   methods: {
     async getIpAddress() {
-      await axios
-        .get('https://api.ipify.org?format=text')
-        .then(function (response) {
-          console.log('response IP data -->', response)
-          return response.text()
-        })
-        .then(function (ip) {
-          console.log('ip data set-->', ip)
-          this._IP = ip
-        })
+      await axios.get('https://api.ipify.org?format=text').then(function (response) {
+        console.log('response IP data -->', response.data)
+        //return response.text()
+        this._IP = response.data
+      })
+      // .then(function (ip) {
+      //   console.log('ip data set-->', ip)
+      //   this._IP = ip
+      // })
       console.log('this._ip set-->', this._IP)
     },
     async liffAdd() {
