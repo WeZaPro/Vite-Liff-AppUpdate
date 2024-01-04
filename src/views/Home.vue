@@ -79,6 +79,15 @@ export default {
     //4.ถ้าไม่เจอ ignore
     //5.ถ้าเจอ เอาข้อ 2 + ข้อมูลที่เจอ Save API userGtm
     console.log('MOUNT-->')
+    // get ip address
+    fetch('https://api.ipify.org?format=text')
+      .then(function (response) {
+        console.log('response data -->', response)
+        return response.text()
+      })
+      .then(function (ip) {
+        console.log('ip data set-->', ip)
+      })
 
     console.log('process.env.VUE_APP_API-->', process.env.VUE_APP_API)
     // console.log('process.env.VUE_APP_ENV_VARIABLE-->', process.env.VUE_APP_ENV_VARIABLE)
