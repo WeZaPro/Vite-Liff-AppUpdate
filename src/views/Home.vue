@@ -122,25 +122,13 @@ export default {
   },
   methods: {
     async getIpAddress() {
-      const getIP = ''
-      const arrIP = []
-      await axios.get('https://api.ipify.org?format=text').then(function (response) {
+      const IPADDRESS = await axios.get('https://api.ipify.org?format=text').then(function (response) {
         console.log('response IP data -->', response.data)
         //return response.text()
-
-        getIP = response.data
-        arrIP.push({
-          ipData: response.data,
-        })
-        console.log('getIP-->in FN', getIP)
-        console.log('arrIP-->in FN', arrIP)
+        return response.data
       })
-      // .then(function (ip) {
-      //   console.log('ip data set-->', ip)
-      //   this._IP = ip
-      // })
-      console.log('getIP-->', getIP)
-      console.log('arrIP-->', arrIP)
+
+      console.log('IPADDRESS---> ', IPADDRESS)
     },
     async liffAdd() {
       await liff
@@ -176,9 +164,6 @@ export default {
               console.log('profile--> ', profile)
               this.profile = profile
               this.lineUid = this.profile.userId
-
-              //console.log('this.$route.query.utm_source-->***', this.$route.query.ads_utm_source)
-              //console.log('this.$route.query.utm_medium-->***', this.$route.query.ads_utm_medium)
 
               var gtm_data = {
                 // sample data
