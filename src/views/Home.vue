@@ -123,19 +123,24 @@ export default {
   methods: {
     async getIpAddress() {
       const getIP = ''
+      const arrIP = []
       await axios.get('https://api.ipify.org?format=text').then(function (response) {
         console.log('response IP data -->', response.data)
         //return response.text()
-        this._IP = response.data
+
         getIP = response.data
+        arrIP.push({
+          ipData: response.data,
+        })
         console.log('getIP-->in FN', getIP)
+        console.log('arrIP-->in FN', arrIP)
       })
       // .then(function (ip) {
       //   console.log('ip data set-->', ip)
       //   this._IP = ip
       // })
       console.log('getIP-->', getIP)
-      console.log('this._ip set-->', this._IP)
+      console.log('arrIP-->', arrIP)
     },
     async liffAdd() {
       await liff
