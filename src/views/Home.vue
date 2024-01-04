@@ -86,6 +86,7 @@ export default {
         return response.text()
       })
       .then(function (ip) {
+        console.log('ip data set-->', ip)
         this._IP = ip
       })
     console.log('this._ip set-->', this._IP)
