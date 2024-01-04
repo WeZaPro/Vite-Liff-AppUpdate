@@ -79,7 +79,6 @@ export default {
     //5.ถ้าเจอ เอาข้อ 2 + ข้อมูลที่เจอ Save API userGtm
     console.log('MOUNT-->')
     // get ip address
-    this.ipAddress()
 
     console.log('process.env.VUE_APP_API-->', process.env.VUE_APP_API)
     // console.log('process.env.VUE_APP_ENV_VARIABLE-->', process.env.VUE_APP_ENV_VARIABLE)
@@ -117,12 +116,14 @@ export default {
     //run liff
     this.liffAdd()
     this.getAllData()
+    this.getIpAddress()
     // this.sendGAapiStartChat()
     //this.saveData(data)
   },
   methods: {
-    async ipAddress() {
-      await fetch('https://api.ipify.org?format=text')
+    async getIpAddress() {
+      await axios
+        .get('https://api.ipify.org?format=text')
         .then(function (response) {
           console.log('response IP data -->', response)
           return response.text()
