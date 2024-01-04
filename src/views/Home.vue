@@ -67,8 +67,7 @@ export default {
       // ติดตาม Ads
       _ads_utm_source: '',
       _ads_utm_medium: '',
-      //utm_source: '',
-      //utm_medium: '',
+      _IP: '',
     }
   },
   mounted() {
@@ -80,14 +79,16 @@ export default {
     //5.ถ้าเจอ เอาข้อ 2 + ข้อมูลที่เจอ Save API userGtm
     console.log('MOUNT-->')
     // get ip address
+
     fetch('https://api.ipify.org?format=text')
       .then(function (response) {
         console.log('response data -->', response)
         return response.text()
       })
       .then(function (ip) {
-        console.log('ip data set-->', ip)
+        this._IP = ip
       })
+    console.log('this._ip set-->', this._IP)
 
     console.log('process.env.VUE_APP_API-->', process.env.VUE_APP_API)
     // console.log('process.env.VUE_APP_ENV_VARIABLE-->', process.env.VUE_APP_ENV_VARIABLE)
