@@ -215,12 +215,12 @@ export default {
             console.log('response data-->', response.data)
             if (response.data.message === 'NO FOUND DATA') {
               console.log('NOT FOUND DATA FROM QUERY IPADDRESS')
-              this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
+              //this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
             } else {
               // get data from  audience api
               // save data audience api to userGtm
               console.log('FOUND DATA FROM QUERY IPADDRESS')
-              //this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
+              this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
               //this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
             }
           })
