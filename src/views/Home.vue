@@ -210,7 +210,7 @@ export default {
       console.log('FOUND QUERY IPADDRESS', ipAddress_queryString)
       try {
         await axios
-          .get('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms/audience/' + test_ip)
+          .get('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms/audience/' + ipAddress_queryString)
           .then(response => {
             console.log('response data-->', response.data)
             if (response.data.message === 'NO FOUND DATA') {
