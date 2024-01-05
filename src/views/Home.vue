@@ -305,6 +305,7 @@ export default {
           .post('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms', gtm_data, this.HEADER)
           .then(response => {
             console.log('save data-->', response.data)
+            this.alert(response.data.message)
           })
       } catch (err) {
         console.log('err--> ', err)
