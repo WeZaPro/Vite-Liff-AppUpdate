@@ -210,7 +210,7 @@ export default {
       console.log('FOUND QUERY IPADDRESS', ipAddress_queryString)
       try {
         await axios
-          .get('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms/audience/' + ipAddress_queryString)
+          .get('https://mkt-linebot-nodejs-production.up.railway.app/api/audience/' + ipAddress_queryString)
           .then(response => {
             console.log('response data-->', response.data)
             if (response.data.message === 'NO FOUND DATA') {
@@ -220,7 +220,7 @@ export default {
               // save data audience api to userGtm
               console.log('FOUND DATA FROM QUERY IPADDRESS')
               this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
-              this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
+              //this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
             }
           })
       } catch (err) {
