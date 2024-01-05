@@ -192,7 +192,7 @@ export default {
               //}
 
               // get data from api audience
-              this.getDataFromAudienceAndSave(ipAddress_queryString, this.lineUid, this.lineDisplayName)
+              this.getDataFromAudienceAndSave(this.ipAddress_queryString, this.lineUid, this.lineDisplayName)
 
               // this.sendGAapiStartChat(gtm_data)
               // this.saveData(gtm_data)
@@ -318,7 +318,6 @@ export default {
           .post('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms', gtm_data, this.HEADER)
           .then(response => {
             console.log('save data-->', response.data)
-            this.alert(response.data.message)
           })
       } catch (err) {
         console.log('err--> ', err)
