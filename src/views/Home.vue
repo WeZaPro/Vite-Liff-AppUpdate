@@ -2,6 +2,9 @@
   <div id="header">
     <h3>CONGRATULATIONS</h3>
     <p>{{ profile.displayName }}</p>
+    <p>{{ profile.userId }}</p>
+    <p>{{ this.botUserId }}</p>
+    <p>{{ this.ipAddress_queryString }}</p>
   </div>
 
   <div id="app">
@@ -81,7 +84,7 @@ export default {
     console.log('MOUNT-->')
     // get ip address
 
-    console.log('process.env.VUE_APP_API-->', process.env.VUE_APP_API)
+    //console.log('process.env.VUE_APP_API-->', process.env.VUE_APP_API)
     // console.log('process.env.VUE_APP_ENV_VARIABLE-->', process.env.VUE_APP_ENV_VARIABLE)
     //console.log('process.env.VUE_APP_TITLE-->', process.env.VUE_APP_TITLE)
 
@@ -158,6 +161,7 @@ export default {
 
             this.ipAddress_queryString = this.$route.query.ipAddress
             console.log('ipAddress_queryString-->', this.ipAddress_queryString)
+            this.botUserId = this.$route.query.botUserId
 
             this.getProfile()
             this.getFriendship()
@@ -167,22 +171,11 @@ export default {
               console.log('profile--> ', profile)
               this.profile = profile
 
-              alert(
-                'ipAddress_queryString: ' +
-                  this.ipAddress_queryString +
-                  ' botUserId: ' +
-                  this.$route.query.botUserId +
-                  ' lineUid: ' +
-                  this.profile.userId +
-                  ' lineDisplayName: ' +
-                  this.profile.displayName
-              )
-
               var gtm_data = {
                 // sample data
-                botUserId: this.$route.query.botUserId, //use
-                lineUid: this.profile.userId, //use
-                lineDisplayName: this.profile.displayName, //use
+                //botUserId: this.$route.query.botUserId, //use
+                //lineUid: this.profile.userId, //use
+                //lineDisplayName: this.profile.displayName, //use
               }
               // this.sendGAapiStartChat(gtm_data)
               // this.saveData(gtm_data)
