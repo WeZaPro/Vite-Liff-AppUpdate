@@ -5,7 +5,7 @@
     <h3>userId</h3>
     <p>{{ profile.userId }}</p>
     <h3>botUserId</h3>
-    <p>{{ this.botUserId }}</p>
+    <p>{{ this._botUserId }}</p>
     <h3>ipAddress_queryString</h3>
     <p>{{ this.ipAddress_queryString }}</p>
   </div>
@@ -63,6 +63,7 @@ export default {
       uniqueEventId: '',
       _sessionId: '',
       botUserId: '',
+      _botUserId: '',
       //test
       changeUserAgent: '',
       //test: '',
@@ -106,8 +107,8 @@ export default {
     // this._sessionId = this.$route.query.sessionId
     // console.log('sessionId-->', this._sessionId)
 
-    // this._botUserId = this.$route.query.botUserId
-    // console.log('_botUserId-->', this._botUserId)
+    this._botUserId = this.$route.query.botUserId
+    console.log('_botUserId-->', this._botUserId)
 
     // this._ads_utm_source = this.$route.query.ads_utm_source
     // console.log('_ads_utm_source-->', this._ads_utm_source)
