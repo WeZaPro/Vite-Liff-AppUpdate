@@ -52,7 +52,6 @@ export default {
       client_id: '',
       userId: '',
       userAgent: '',
-      ipAddress_queryString: '',
       ipAddress: '',
       uniqueEventId: '',
       _sessionId: '',
@@ -156,8 +155,8 @@ export default {
             // this.getParam = params.get('param')
             // console.log('param--->', this.getParam)
 
-            this.ipAddress_queryString = this.$route.query.ipAddress
-            console.log('ipAddress_queryString-->', this.ipAddress_queryString)
+            this.ipAddress = this.$route.query.getIpAddress
+            console.log('ipAddress-->', this.ipAddress)
 
             this.getProfile()
             this.getFriendship()
@@ -167,16 +166,7 @@ export default {
               console.log('profile--> ', profile)
               this.profile = profile
 
-              alert(
-                'ipAddress_queryString: ' +
-                  this.ipAddress_queryString +
-                  ' botUserId: ' +
-                  this.$route.query.botUserId +
-                  ' lineUid: ' +
-                  this.profile.userId +
-                  ' lineDisplayName: ' +
-                  this.profile.displayName
-              )
+              alert(this.ipAddress)
 
               var gtm_data = {
                 // sample data
