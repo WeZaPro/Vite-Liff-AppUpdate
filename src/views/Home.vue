@@ -207,6 +207,7 @@ export default {
 
     async getDataFromAudienceAndSave(ipAddress_queryString, lineUid, lineDisplayName) {
       const test_ip = '223.204.232.69'
+      console.log('FOUND QUERY IPADDRESS', ipAddress_queryString)
       try {
         await axios
           .get('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms/audience/' + test_ip)
