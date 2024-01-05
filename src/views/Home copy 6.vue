@@ -72,7 +72,6 @@ export default {
       //test: '',
       //line uid
       lineUid: '',
-      lineDisplayName: '',
       //data
       data: '',
 
@@ -83,9 +82,6 @@ export default {
     }
   },
   mounted() {
-    this.ipAddress_queryString = this.$route.query.ipAddress
-    this.botUserId = this.$route.query.botUserId
-
     //TODO**************
     //1.javascript get ipAddress
     //2.ดึงข้อมูล lineBotId (มาจาก queryString ที่ส่งมาจาก Bot API) ตอนกดปุ่ม yes , lineUid , diaplayName
@@ -130,7 +126,7 @@ export default {
 
     //run liff
     this.liffAdd()
-    //this.getAllData()
+    this.getAllData()
     this.getIpAddress()
     // this.sendGAapiStartChat()
     //this.saveData(data)
@@ -170,9 +166,9 @@ export default {
             // this.getParam = params.get('param')
             // console.log('param--->', this.getParam)
 
-            // this.ipAddress_queryString = this.$route.query.ipAddress
-            // console.log('ipAddress_queryString-->', this.ipAddress_queryString)
-            // this.botUserId = this.$route.query.botUserId
+            this.ipAddress_queryString = this.$route.query.ipAddress
+            console.log('ipAddress_queryString-->', this.ipAddress_queryString)
+            this.botUserId = this.$route.query.botUserId
 
             this.getProfile()
             this.getFriendship()
@@ -181,19 +177,13 @@ export default {
             liff.getProfile().then(profile => {
               console.log('profile--> ', profile)
               this.profile = profile
-              this.lineUid = this.profile.userId
-              this.lineDisplayName = this.profile.displayName
 
-              //var gtm_data = {
-              // sample data
-              //botUserId: this.$route.query.botUserId, //use
-              //lineUid: this.profile.userId, //use
-              //lineDisplayName: this.profile.displayName, //use
-              //}
-
-              // get data from api audience
-              this.getDataFromAudienceAndSave(ipAddress_queryString, this.lineUid, this.lineDisplayName)
-
+              var gtm_data = {
+                // sample data
+                //botUserId: this.$route.query.botUserId, //use
+                //lineUid: this.profile.userId, //use
+                //lineDisplayName: this.profile.displayName, //use
+              }
               // this.sendGAapiStartChat(gtm_data)
               // this.saveData(gtm_data)
               this.sendMsg()
@@ -203,27 +193,6 @@ export default {
         .catch(err => {
           this.occoredError = 'error:' + err
         })
-    },
-
-    async getDataFromAudienceAndSave(ipAddress_queryString, lineUid, lineDisplayName) {
-      try {
-        await axios
-          .get('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms/audience/' + ipAddress_queryString)
-          .then(response => {
-            console.log('response data-->', response.data)
-            if (response.data.message === 'NO FOUND DATA') {
-              console.log('NOT FOUND DATA ')
-            } else {
-              // get data from  audience api
-              // save data audience api to userGtm
-              console.log('FOUND DATA ')
-              this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
-              this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
-            }
-          })
-      } catch (err) {
-        console.log('err-->', err)
-      }
     },
 
     async getAllData() {
@@ -236,24 +205,9 @@ export default {
         console.log('err-->', err)
       }
     },
-    async sendGAapiStartChat(data, lineUid, lineDisplayName) {
+    async sendGAapiStartChat(gtm_data) {
       console.log('sendGAapiStartChat--> ')
       //***************************** *///TODO Send data to GA4 API
-      gtm_data = {
-        botUserId: this._botUserId,
-        userId: data.userId,
-        lineUid: lineUid,
-        lineDisplayName: lineDisplayName,
-        client_id: data.client_id,
-        userAgent: data.userAgent,
-        ipAddressWebStart: data.ipAddress,
-        ipAddressChatLine: this.new_IPADDRESS,
-        uniqueEventId: data.uniqueEventId,
-        sessionId: data.sessionId,
-        timeStamp: data.timeStamp,
-        utm_source: data.utm_source,
-        utm_medium: data.utm_medium,
-      }
       try {
         this.HEADER = {
           headers: {
@@ -275,23 +229,9 @@ export default {
       //***************************** */
     },
 
-    async saveDataUserGtm(data, lineUid, lineDisplayName) {
+    async saveData(gtm_data) {
       console.log('SAVE DATABASE==>')
-      gtm_data = {
-        botUserId: this._botUserId,
-        userId: data.userId,
-        lineUid: lineUid,
-        lineDisplayName: lineDisplayName,
-        client_id: data.client_id,
-        userAgent: data.userAgent,
-        ipAddressWebStart: data.ipAddress,
-        ipAddressChatLine: this.new_IPADDRESS,
-        uniqueEventId: data.uniqueEventId,
-        sessionId: data.sessionId,
-        timeStamp: data.timeStamp,
-        utm_source: data.utm_source,
-        utm_medium: data.utm_medium,
-      }
+
       try {
         this.HEADER = {
           headers: {
