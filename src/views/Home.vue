@@ -219,8 +219,8 @@ export default {
               // get data from  audience api
               // save data audience api to userGtm
               console.log('FOUND DATA FROM QUERY IPADDRESS')
-              // this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
-              // this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
+              this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
+              this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
             }
           })
       } catch (err) {
