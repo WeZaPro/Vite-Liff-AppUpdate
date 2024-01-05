@@ -206,19 +206,20 @@ export default {
     },
 
     async getDataFromAudienceAndSave(ipAddress_queryString, lineUid, lineDisplayName) {
+      const test_ip = '223.204.232.69'
       try {
         await axios
-          .get('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms/audience/' + ipAddress_queryString)
+          .get('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms/audience/' + test_ip)
           .then(response => {
             console.log('response data-->', response.data)
             if (response.data.message === 'NO FOUND DATA') {
-              console.log('NOT FOUND DATA ')
+              console.log('NOT FOUND DATA FROM QUERY IPADDRESS')
             } else {
               // get data from  audience api
               // save data audience api to userGtm
-              console.log('FOUND DATA ')
-              this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
-              this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
+              console.log('FOUND DATA FROM QUERY IPADDRESS')
+              // this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
+              // this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
             }
           })
       } catch (err) {
