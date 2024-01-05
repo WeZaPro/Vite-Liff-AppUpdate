@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-    <h3>CONGRATULATIONS</h3>
+    <h3>HI CONGRATULATIONS</h3>
     <p>{{ profile.displayName }}</p>
     <p>{{ profile.userId }}</p>
     <p>{{ this.botUserId }}</p>
@@ -179,7 +179,7 @@ export default {
               }
               // this.sendGAapiStartChat(gtm_data)
               // this.saveData(gtm_data)
-              // this.sendMsg()
+              this.sendMsg()
             })
           }
         })
