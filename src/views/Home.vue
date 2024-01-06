@@ -184,19 +184,20 @@ export default {
               this.lineUid = this.profile.userId
               this.lineDisplayName = this.profile.displayName
 
-              //var gtm_data = {
-              // sample data
-              //botUserId: this.$route.query.botUserId, //use
-              //lineUid: this.profile.userId, //use
-              //lineDisplayName: this.profile.displayName, //use
-              //}
+              var gtm_data = {
+                //sample data
+                botUserId: this.$route.query.botUserId, //use
+                lineUid: this.profile.userId, //use
+                lineDisplayName: this.profile.displayName, //use
+                ipAddressWebStart: this.ipAddress_queryString,
+              }
 
               // get data from api audience
-              this.getDataFromAudienceAndSave(this.ipAddress_queryString, this.lineUid, this.lineDisplayName)
+              this.saveDataUserGtm(gtm_data)
 
               // this.sendGAapiStartChat(gtm_data)
               // this.saveData(gtm_data)
-              this.sendMsg()
+              //this.sendMsg()
             })
           }
         })
@@ -205,29 +206,29 @@ export default {
         })
     },
 
-    async getDataFromAudienceAndSave(ipAddress_queryString, lineUid, lineDisplayName) {
-      const test_ip = '223.204.232.69'
-      console.log('FOUND QUERY IPADDRESS', ipAddress_queryString)
-      try {
-        await axios
-          .get('https://mkt-linebot-nodejs-production.up.railway.app/api/audience/' + ipAddress_queryString)
-          .then(response => {
-            console.log('response data-->', response.data)
-            if (response.data.message === 'NO FOUND DATA') {
-              console.log('NOT FOUND DATA FROM QUERY IPADDRESS')
-              //this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
-            } else {
-              // get data from  audience api
-              // save data audience api to userGtm
-              console.log('FOUND DATA FROM QUERY IPADDRESS')
-              this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
-              //this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
-            }
-          })
-      } catch (err) {
-        console.log('err-->', err)
-      }
-    },
+    // async saveDataUserGtm(gtm_data) {
+    //   const test_ip = '223.204.232.69'
+    //   console.log('FOUND QUERY IPADDRESS', ipAddress_queryString)
+    //   try {
+    //     await axios
+    //       .get('https://mkt-linebot-nodejs-production.up.railway.app/api/audience/' + ipAddress_queryString)
+    //       .then(response => {
+    //         console.log('response data-->', response.data)
+    //         if (response.data.message === 'NO FOUND DATA') {
+    //           console.log('NOT FOUND DATA FROM QUERY IPADDRESS')
+    //           //this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
+    //         } else {
+    //           // get data from  audience api
+    //           // save data audience api to userGtm
+    //           console.log('FOUND DATA FROM QUERY IPADDRESS')
+    //           this.saveDataUserGtm(response.data.sendData, lineUid, lineDisplayName)
+    //           //this.sendGAapiStartChat(response.data.sendData, lineUid, lineDisplayName)
+    //         }
+    //       })
+    //   } catch (err) {
+    //     console.log('err-->', err)
+    //   }
+    // },
 
     async getAllData() {
       try {
@@ -278,36 +279,36 @@ export default {
       //***************************** */
     },
 
-    async saveDataUserGtm(data, lineUid, lineDisplayName) {
+    async saveDataUserGtm(gtm_data) {
       console.log('SAVE DATABASE==>')
-      gtm_data = {
-        // botUserId: this._botUserId,
-        // userId: data.userId,
-        // lineUid: lineUid,
-        // lineDisplayName: lineDisplayName,
-        // client_id: data.client_id,
-        // userAgent: data.userAgent,
-        // ipAddressWebStart: data.ipAddress,
-        // ipAddressChatLine: this.new_IPADDRESS,
-        // uniqueEventId: data.uniqueEventId,
-        // sessionId: data.sessionId,
-        // timeStamp: data.timeStamp,
-        // utm_source: data.utm_source,
-        // utm_medium: data.utm_medium,
+      //gtm_data = {
+      // botUserId: this._botUserId,
+      // userId: data.userId,
+      // lineUid: lineUid,
+      // lineDisplayName: lineDisplayName,
+      // client_id: data.client_id,
+      // userAgent: data.userAgent,
+      // ipAddressWebStart: data.ipAddress,
+      // ipAddressChatLine: this.new_IPADDRESS,
+      // uniqueEventId: data.uniqueEventId,
+      // sessionId: data.sessionId,
+      // timeStamp: data.timeStamp,
+      // utm_source: data.utm_source,
+      // utm_medium: data.utm_medium,
 
-        botUserId: 'botUserId123',
-        userId: 'botUserId123',
-        client_id: 'client_id123',
-        lineUid: 'lineUid123',
-        userAgent: 'userAgent123',
-        ipAddressWebStart: 'ipAddress123',
-        ipAddressChatLine: 'ipAddress123',
-        uniqueEventId: 'uniqueEventId123',
-        sessionId: 'sessionId123',
-        lineDisplayName: 'lineDisplayName123',
-        utm_source: 'FACKBOOK',
-        utm_medium: 'FACKBOOKADS',
-      }
+      // botUserId: 'botUserId123',
+      // userId: 'botUserId123',
+      // client_id: 'client_id123',
+      // lineUid: 'lineUid123',
+      // userAgent: 'userAgent123',
+      // ipAddressWebStart: 'ipAddress123',
+      // ipAddressChatLine: 'ipAddress123',
+      // uniqueEventId: 'uniqueEventId123',
+      // sessionId: 'sessionId123',
+      // lineDisplayName: 'lineDisplayName123',
+      // utm_source: 'FACKBOOK',
+      // utm_medium: 'FACKBOOKADS',
+      //}
       try {
         this.HEADER = {
           headers: {
