@@ -320,7 +320,7 @@ export default {
         // await axios.post('http://localhost:8080/api/userGtms', data, this.HEADER).then(response => {
         // await axios.post(process.env.VUE_APP_API + '/api/userGtms/', gtm_data, this.HEADER).then(response => {
         await axios
-          .post('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms/create', gtm_data, this.HEADER)
+          .post('https://mkt-linebot-nodejs-production.up.railway.app/api/userGtms/', gtm_data, this.HEADER)
           .then(response => {
             console.log('save data-->', response.data)
           })
