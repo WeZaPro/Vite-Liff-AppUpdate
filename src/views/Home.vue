@@ -252,7 +252,7 @@ export default {
         client_id: data.client_id,
         userAgent: data.userAgent,
         //ipAddressWebStart: data.ipAddress,
-        ipAddressWebStart: ipAddress_queryString,
+        ipAddressWebStart: this.ipAddress_queryString,
         ipAddressChatLine: this.new_IPADDRESS,
         uniqueEventId: data.uniqueEventId,
         sessionId: data.sessionId,
