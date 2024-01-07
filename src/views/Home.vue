@@ -79,6 +79,7 @@ export default {
       // ติดตาม Ads
       _ads_utm_source: '',
       _ads_utm_medium: '',
+      _ads_utm_term: '',
       _IP: '',
     }
   },
@@ -262,6 +263,7 @@ export default {
         timeStamp: data.timeStamp,
         utm_source: data.utm_source,
         utm_medium: data.utm_medium,
+        utm_term: data.utm_term,
       }
       try {
         this.HEADER = {
