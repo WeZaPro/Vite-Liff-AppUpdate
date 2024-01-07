@@ -10,6 +10,8 @@
     <p>{{ this.ipAddress_queryString }}</p>
     <h3>new IpAddress</h3>
     <p>{{ new_IPADDRESS }}</p>
+    <h3>userId</h3>
+    <p>{{ this.userId_queryString }}</p>
   </div>
 
   <div id="app">
