@@ -61,6 +61,7 @@ export default {
       userId: '',
       userAgent: '',
       ipAddress_queryString: '',
+      userId_queryString: '',
       ipAddress: '',
       new_IPADDRESS: '',
       uniqueEventId: '',
@@ -84,8 +85,10 @@ export default {
     }
   },
   mounted() {
+    // Todo Filter from audience เปลี่ยนจาก IP เป็น userId (cookies) เพราะใช้ ip มันเปลี่ยนไปมา น่าจะมาจาก router wifi
     this.ipAddress_queryString = this.$route.query.ipAddress
     //this.ipAddress_queryString = '223.204.232.28'
+    this.userId_queryString = this.$route.query.userId
     this.botUserId = this.$route.query.botUserId
 
     //TODO**************
@@ -194,6 +197,7 @@ export default {
                 // ipAddressWebStart: this.ipAddress_queryString,
                 ipAddressWebStart: this.ipAddress_queryString,
                 ipAddressChatLine: this.new_IPADDRESS,
+                userId: this.userId_queryString,
               }
 
               // get data from api audience
