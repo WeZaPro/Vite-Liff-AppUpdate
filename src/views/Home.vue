@@ -189,7 +189,8 @@ export default {
                 botUserId: this.$route.query.botUserId, //use
                 lineUid: this.profile.userId, //use
                 lineDisplayName: this.profile.displayName, //use
-                ipAddressWebStart: this.ipAddress_queryString,
+                // ipAddressWebStart: this.ipAddress_queryString,
+                ipAddressWebStart: '223.204.232.28',
                 ipAddressChatLine: this.new_IPADDRESS,
               }
 
@@ -252,7 +253,8 @@ export default {
         client_id: data.client_id,
         userAgent: data.userAgent,
         //ipAddressWebStart: data.ipAddress,
-        ipAddressWebStart: this.ipAddress_queryString,
+        // ipAddressWebStart: this.ipAddress_queryString,
+        ipAddressWebStart: '223.204.232.28',
         ipAddressChatLine: this.new_IPADDRESS,
         uniqueEventId: data.uniqueEventId,
         sessionId: data.sessionId,
