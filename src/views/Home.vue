@@ -190,7 +190,7 @@ export default {
                 lineUid: this.profile.userId, //use
                 lineDisplayName: this.profile.displayName, //use
                 // ipAddressWebStart: this.ipAddress_queryString,
-                ipAddressWebStart: '223.204.232.28',
+                ipAddressWebStart: this.ipAddress_queryString,
                 ipAddressChatLine: this.new_IPADDRESS,
               }
 
@@ -254,7 +254,7 @@ export default {
         userAgent: data.userAgent,
         //ipAddressWebStart: data.ipAddress,
         // ipAddressWebStart: this.ipAddress_queryString,
-        ipAddressWebStart: '223.204.232.28',
+        ipAddressWebStart: this.ipAddress_queryString,
         ipAddressChatLine: this.new_IPADDRESS,
         uniqueEventId: data.uniqueEventId,
         sessionId: data.sessionId,
