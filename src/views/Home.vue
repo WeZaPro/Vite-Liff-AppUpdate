@@ -1,7 +1,7 @@
 <template>
   <div id="header">
-    <h3>HI CONGRATULATIONS</h3>
-    <p>{{ profile.displayName }}</p>
+    <!-- <h3>HI CONGRATULATIONS</h3> -->
+    <!-- <p>{{ profile.displayName }}</p> -->
     <h3>userId</h3>
     <p>{{ profile.userId }}</p>
     <h3>botUserId:</h3>
