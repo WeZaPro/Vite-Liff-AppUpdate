@@ -83,7 +83,8 @@ export default {
     }
   },
   mounted() {
-    this.ipAddress_queryString = this.$route.query.ipAddress
+    // this.ipAddress_queryString = this.$route.query.ipAddress
+    this.ipAddress_queryString = '223.204.232.28'
     this.botUserId = this.$route.query.botUserId
 
     //TODO**************
